@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!--npx tailwindcss -i ./src/input.css -o ./build/css/style.css --watch-->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>gallery</title>
+    <meta name="description" content="Max Yang is a 15-year-old boy from Lake Zurich who plays a violin and programs code.">
+
+    <link rel="icon" type="image/png" sizes="512x512" href="images/favicon-512x512.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="180x180" href="images/favicon-180x180.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/gallerycss.css">
+    <meta name="theme-color" content="#596886"/>
+    <script>window.addEventListener("beforeunload", function () {
+      document.body.classList.add("animate-out");
+    });</script>
+</head>
+
+<body class = "animate-in">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NE8WSYJKWR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NE8WSYJKWR');
+</script>
+<div class="flex flex-col h-screen justify-between ">
+<header class="bg-main3">
+<style>
+      /* New style to remove horizontal scroll */
+      body {
+        overflow-x: hidden;
+      }
+</style>
+<div class="relative z-20 border-b bg-main rounded-md">
+    
+    <div class="px-6 md:px-12 lg:container lg:mx-auto lg:px-6 lg:py-4">
+    <div class="flex items-center justify-between">
+            <div class="relative z-20">
+            <a href="index.html">
+            <img src="images/max.svg" alt="this is the max yang logo" class="w-32">
+            </a>
+</div>
+
+<div class="flex items-center justify-end border-l lg:border-l-0">
+<input type="checkbox" name="hamburger" id="hamburger" class="peer" hidden>
+<label for="hamburger" class="peer-checked:hamburger block relative z-20 p-6 -mr-6 cursor-pointer lg:hidden">
+<div aria-hidden="true" class="m-auto h-0.5 w-6 rounded bg-main1 transition duration-300"></div>
+<div aria-hidden="true" class="m-auto mt-2 h-0.5 w-6 rounded bg-main1 transition duration-300"></div>
+</label>
+
+<div class="peer-checked:translate-x-0 fixed inset-0 w-[calc(100%-4.5rem)] translate-x-[-100%] bg-main2 rounded border-r-2 shadow-2xl transition duration-300 lg:border-r-0 lg:w-auto lg:static lg:shadow-none lg:translate-x-0">
+<div class="flex flex-col h-full justify-between lg:items-center lg:flex-row">
+<ul class="px-6 pt-32 text-gray-700 space-y-8 md:px-12 lg:space-y-0 lg:flex lg:space-x-12 lg:pt-0">
+    <li>
+        <a href="index.html" class="group relative before:absolute before:inset-x-0 before:bottom-0 before:h-2 before:origin-right before:scale-x-0 before:bg-main3 before:transition before:duration-300 hover:before:origin-left hover:before:scale-x-100">
+            <span class="relative group-hover:text-cyan-800">home</span>
+        </a>
+        </li>
+        <li>
+        <a href="projects.html" class="group relative before:absolute before:inset-x-0 before:bottom-0 before:h-2 before:origin-right before:scale-x-0 before:bg-main3 before:transition before:duration-300 hover:before:origin-left hover:before:scale-x-100">
+            <span class="relative text-cyan-800">projects and achievements</span>
+        </a>
+  </li>
+  <li>
+    <a href="gallery.html" class="group relative before:absolute before:inset-x-0 before:bottom-0 before:h-2 before:bg-main3">
+        <span class="relative text-cyan-800">gallery</span>
+    </a>
+  </li>
+    <li>
+        <a href="aboutme.html" class="group relative before:absolute before:inset-x-0 before:bottom-0 before:h-2 before:origin-right before:scale-x-0 before:bg-main3 before:transition before:duration-300 hover:before:origin-left hover:before:scale-x-100">
+            <span class="relative group-hover:text-cyan-800">about me</span>
+        </a>
+</li>
+
+
+</ul>
+
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+</div>
+<style>
+  .marquee {
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .marquee span {
+    display: inline-block;
+    font-size: 20px;
+    position: relative;
+  color: #6c6c6c00;
+    left: 100%;
+  
+    animation: marquee 10.0s linear infinite;
+  }
+  .marquee:hover span {
+    animation-play-state: paused;
+  }
+  
+  .marquee span:nth-child(1) {
+    animation-delay: 0s;
+  }
+  .marquee span:nth-child(2) {
+    animation-delay: 0.4s;
+  }
+  .marquee span:nth-child(3) {
+    animation-delay: 0.8s;
+  }
+  .marquee span:nth-child(4) {
+    animation-delay: 1.2s;
+  }
+  .marquee span:nth-child(5) {
+    animation-delay: 1.6s;
+  }
+  .marquee span:nth-child(6) {
+    animation-delay: 2.0s;
+  }
+  .marquee span:nth-child(7) {
+    animation-delay: 2.4s;
+  }
+  .marquee span:nth-child(8) {
+    animation-delay: 2.6s;
+  }
+  .marquee span:nth-child(9) {
+    animation-delay: 2.8s;
+  }
+  .marquee span:nth-child(10) {
+    animation-delay: 3.2s;
+  }
+  .marquee span:nth-child(11) {
+    animation-delay: 3.6s;
+  }
+  .marquee span:nth-child(12) {
+    animation-delay: 4.0s;
+  }
+  
+  
+  @keyframes marquee {
+    0%   { left: 100%; }
+    100% { left: -100%; }
+  }
+  </style>
+  <p class="marquee">
+    <span>max yang</span>
+    <span> | </span>
+    <span>max yang</span>
+    <span> | </span>
+  <span>max yang</span>
+    <span> | </span>
+    <span>max yang</span>
+    <span> | </span>
+  <span>max yang</span>
+    <span> | </span>
+    <span>max yang</span>
+    <span> | </span>
+  
+  </p>
+
+</header>
+
+    
+<main class="">
+  <spacer type="horizontal" width="100" height="300">  </spacer>
+  <div class="gap-8 columns-3">
+    <style>
+      img {
+        -drag: none;
+        user-select: none;
+        -moz-user-select: none;
+        -webkit-user-drag: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+
+      }
+      
+  </style>
+    <img class="w-full aspect-auto mb-6" src="images/1cars.JPG" />
+    <img class="w-full aspect-auto mb-6" src="images/1dapingtai.JPG" />
+    <img class="w-full aspect-auto mb-6" src="images/1georgeclose.JPG" />
+    <img class="w-full aspect-auto mb-6" src="images/1littlemax.JPG" />
+    <img class="w-full aspect-auto mb-6" src="images/1threegirls.JPG" />
+    <img class="w-full aspect-auto mb-6" src="images/ucsdpier.JPG" />
+    <img class="w-full aspect-auto mb-6" src="images/IMG_1818.jpg" />
+    <img class="w-full aspect-auto mb-6" src="images/IMG_1813.jpg" />
+    <img class="w-full aspect-auto mb-6" src="images/IMG_1800.jpg" />
+    <img class="w-full aspect-auto mb-6" src="images/IMG_0976.jpg" />
+    <img class="w-full aspect-auto mb-6" src="images/IMG_0953.jpg" />
+    <img class="w-full aspect-auto mb-6" src="images/IMG_0879.jpg" />
+    <img class="w-full aspect-auto mb-6" src="images/DSCN4127.JPEG" />
+    <img class="w-full aspect-auto mb-6" src="images/DSCN4134.JPEG" />
+    <img class="w-full aspect-auto mb-6" src="images/DSCN4207.JPEG" />
+
+
+  </div>
+  
+
+</main>
+
+
+
+</body>
+</html>

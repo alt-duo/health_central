@@ -1,0 +1,28 @@
+{
+    "name": "Max Yang's Website",
+    "short_name": "Max Yang",
+    "description": "Max Yang, a 14-year-old boy from Lake Zurich who plays a violin and programs.",
+    "start_url": "/",
+    "display": "standalone",
+    "prefer_related_applications": false,
+    "background_color": "#FFFFFF",
+    "theme_color": "#596886",
+    "icons": [
+        {
+        "src": "images/favicon-512x512.png",
+        "sizes": "512x512",
+        "type": "image/png",
+        "purpose": "any maskable"
+        },
+        {
+        "src": "images/favicon-180x180.png",
+        "sizes": "180x180",
+        "type": "image/png"
+        },
+        {
+        "src": "images/favicon-32x32.png",
+        "sizes": "32x32",
+        "type": "image/png"
+        }
+    ]
+}
