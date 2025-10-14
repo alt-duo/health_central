@@ -21,141 +21,214 @@
 </head>
 
 <body class = "animate-in">
+<div class="dynamic-island">
+  <a href="index.html"><img src="images/health-central.svg" alt="logo-max" class="island-logo mr-6 h-8 w-auto rounded-md shadow" style="height:48px; width:auto; margin-right:1.5rem;"></a>
+
+    <nav class="flex-1 flex flex-row gap-8 justify-end items-center">
+      <a href="index.html" class="island-link">home</a>
+      <a href="projects.html" class="island-link">projects</a>
+      <a href="gallery.html" class="island-link">gallery</a>
+      <a href="aboutme.html" class="island-link">about me</a>
+    </nav>
+</div>
 <div class="flex flex-col h-screen w-screenjustify-between ">
 <header class="bg-main2">
     
 <div class="relative z-20 border-b bg-main rounded-md">
     
-    <div class="px-6 md:px-12 lg:container lg:mx-auto lg:px-6 lg:py-4">
+    <div class="px-6 md:px-12 lg:container lg:mx-auto lg:px-6 py-8">
     <div class="flex items-center justify-between">
             <div class="relative z-20 rounded-md">
-            <img src="images/max.svg" alt="logo-max" class="w-32">
+            <img src="images/health-central.svg" alt="logo-max" class="w-32">
 </div>
 
-<div class="flex items-center justify-end border-l lg:border-l-0">
-<input type="checkbox" name="hamburger" id="hamburger" class="peer" hidden>
-<label for="hamburger" class="peer-checked:hamburger block relative z-20 p-6 -mr-6 cursor-pointer lg:hidden">
-<div aria-hidden="true" class="m-auto h-0.5 w-6 rounded bg-main1 transition duration-300"></div>
-<div aria-hidden="true" class="m-auto mt-2 h-0.5 w-6 rounded bg-main1 transition duration-300"></div>
-</label>
 
-<div class="peer-checked:translate-x-0 fixed inset-0 w-[calc(100%-4.5rem)] translate-x-[-100%] bg-main2 rounded border-r-2 shadow-2xl transition duration-300 lg:border-r-0 lg:w-auto lg:static lg:shadow-none lg:translate-x-0">
-<div class="flex flex-col h-full justify-between lg:items-center lg:flex-row">
-<ul class="px-6 pt-32 text-gray-700 space-y-8 md:px-12 lg:space-y-0 lg:flex lg:space-x-12 lg:pt-0">
-    <li>
-        <a href="index.html" class="group relative before:absolute before:inset-x-0 before:bottom-0 before:h-2 before:bg-main3">
-            <span class="relative text-cyan-800">home</span>
-        </a>
-    </li>
-        <li>
-        <a href="projects.html" class="group relative before:absolute before:inset-x-0 before:bottom-0 before:h-2 before:origin-right before:scale-x-0 before:bg-main3 before:transition before:duration-300 hover:before:origin-left hover:before:scale-x-100">
-            <span class="relative group-hover:text-cyan-800">projects and achievements</span>
-        </a>
-    </li>
-    <li>
-      <a href="gallery.html" class="group relative before:absolute before:inset-x-0 before:bottom-0 before:h-2 before:origin-right before:scale-x-0 before:bg-main3 before:transition before:duration-300 hover:before:origin-left hover:before:scale-x-100">
-          <span class="relative text-cyan-800">gallery</span>
-      </a>
-    </li>
-    <li>
-        <a href="aboutme.html" class="group relative before:absolute before:inset-x-0 before:bottom-0 before:h-2 before:origin-right before:scale-x-0 before:bg-main3 before:transition before:duration-300 hover:before:origin-left hover:before:scale-x-100">
-            <span class="relative group-hover:text-cyan-800">about me</span>
-        </a>
-</li>
-
-</ul>
-
-</div>
-</div>
-
-</div>
 
 </div>
 </div>
 </div>
 <style>
-  .marquee {
+  .dynamic-island {
+    position: fixed;
+    top: clamp(12px, 2vw, 24px);
+    left: 50%;
+    transform: translateX(-50%);
+    width: clamp(280px, 90vw, 1200px);
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+    border-radius: clamp(24px, 4vw, 32px);
+    padding: clamp(0.5rem, 1.5vw, 0.75rem) clamp(1rem, 3vw, 2rem);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1000;
+    transition: all 0.3s ease;
+  }
+  
+  .dynamic-island:hover {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+    background: rgba(255, 255, 255, 1);
+  }
+  
+  .island-logo {
+    display: block;
+    height: clamp(24px, 3vw, 32px);
+    width: auto;
+    margin-right: clamp(0.75rem, 2vw, 1.5rem);
+
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    background: #fff;
+    flex-shrink: 0;
+  }
+  
+  .island-link {
+    text-decoration: none;
+    color: #2a4d8f;
+    font-weight: 500;
+    font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+    padding: clamp(0.25rem, 0.8vw, 0.5rem) clamp(0.5rem, 1.2vw, 1rem);
+    border-radius: clamp(16px, 2vw, 20px);
+    transition: all 0.2s ease;
+    white-space: nowrap;
+  }
+  
+  .island-link:hover {
+    background: #e0e7ff;
+    color: #1e293b;
+    transform: translateY(-1px);
+  }
+  
+  /* Navigation container */
+  .dynamic-island nav {
+    display: flex;
+    gap: clamp(0.5rem, 1.5vw, 2rem);
+    align-items: center;
+    flex-wrap: nowrap;
+  }
+  
+  /* Medium screens (tablets) */
+  @media (max-width: 1024px) and (min-width: 769px) {
+    .dynamic-island {
+      width: 92vw;
+      padding: 0.6rem 1.5rem;
+    }
+    .island-link {
+      font-size: 1rem;
+      padding: 0.3rem 0.7rem;
+    }
+    .dynamic-island nav {
+      gap: 1rem;
+    }
+  }
+  
+  /* Smaller tablets and large phones in landscape */
+  @media (max-width: 768px) and (min-width: 641px) {
+    .dynamic-island {
+      width: 94vw;
+      padding: 0.5rem 1rem;
+      border-radius: 28px;
+    }
+    .island-logo {
+      height: 28px;
+      margin-right: 1rem;
+    }
+    .island-link {
+      font-size: 0.95rem;
+      padding: 0.3rem 0.6rem;
+    }
+    .dynamic-island nav {
+      gap: 0.75rem;
+    }
+  }
+      .marquee {
     width: 100%;
     margin: 0 auto;
     overflow: hidden;
     white-space: nowrap;
+    position: relative;
   }
-  .marquee span {
+  .marquee-content {
+    display: inline-block;
+    animation: marquee-scroll 20s linear infinite;
+    will-change: transform;
+  }
+  .marquee-content span {
     display: inline-block;
     font-size: 20px;
-    position: relative;
-  color: #000000;
-    left: 100%;
-  
-    animation: marquee 8.1s linear infinite;
+    color: #000000;
+    padding: 0 3rem;
   }
-  .marquee:hover span {
+  .marquee:hover .marquee-content {
     animation-play-state: paused;
   }
   
-  .marquee span:nth-child(1) {
-    animation-delay: 0s;
+  @keyframes marquee-scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
   }
-  .marquee span:nth-child(2) {
-    animation-delay: 0.4s;
+  h1 {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
   }
-  .marquee span:nth-child(3) {
-    animation-delay: 0.8s;
+  .trial {
+    border-bottom: 1px solid #ccc;
+    padding: 0.8rem 0;
   }
-  .marquee span:nth-child(4) {
-    animation-delay: 1.2s;
+  .trial:last-child {
+    border: none;
   }
-  .marquee span:nth-child(5) {
-    animation-delay: 1.6s;
+  .title {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #2a4d8f;
   }
-  .marquee span:nth-child(6) {
-    animation-delay: 2.0s;
+  .info {
+    color: #444;
+    font-size: 0.9rem;
   }
-  .marquee span:nth-child(7) {
-    animation-delay: 2.4s;
-  }
-  .marquee span:nth-child(8) {
-    animation-delay: 2.6s;
-  }
-  .marquee span:nth-child(9) {
-    animation-delay: 2.8s;
-  }
-  .marquee span:nth-child(10) {
-    animation-delay: 3.2s;
-  }
-  .marquee span:nth-child(11) {
-    animation-delay: 3.6s;
-  }
-  .marquee span:nth-child(12) {
-    animation-delay: 4.0s;
-  }
-  
-  
-  @keyframes marquee {
-    0%   { left: 100%; }
-    100% { left: -100%; }
-  }
-  </style>
-  <p class="marquee">
-    <span>max yang</span>
-    <span> | </span>
-    <span>max yang</span>
-    <span> | </span>
-  <span>max yang</span>
-    <span> | </span>
-    <span>max yang</span>
-    <span> | </span>
-  <span>max yang</span>
-    <span> | </span>
-    <span>max yang</span>
-    <span> | </span>
-  
-  </p>
+
+    </style>
+
+  <div class="marquee">
+    <div class="marquee-content">
+      <span>health</span>
+      <span>|</span>
+      <span>central</span>
+      <span>|</span>
+      <span>health</span>
+      <span>|</span>
+      <span>central</span>
+      <span>|</span>      
+      <span>health</span>
+      <span>|</span>
+      <span>central</span>
+      <span>|</span>      
+      <span>health</span>
+      <span>|</span>
+      <span>central</span>
+      <span>|</span>      
+      <span>health</span>
+      <span>|</span>
+      <span>central</span>
+      <span>|</span>      
+      <span>health</span>
+      <span>|</span>
+      <span>central</span>
+      <span>|</span>
+    </div>
+  </div>
 
 </header>
 
     
 <main class="">
+
+
+
+<body>
+
     <section
       id="hero"
       class="widescreen:section-min-height tallscreen:section-min-height mb-12 flex scroll-mt-40 flex-col-reverse items-center justify-center gap-8 p-6 sm:flex-row"
@@ -195,63 +268,93 @@
       <h2
         class="mb-6 text-center text-4xl font-bold text-slate-900 dark:text-white sm:text-5xl bg-2"
       >
-        testimonials
+        latest developments
       </h2>
-      <figure class="my-12">
-        <blockquote
-          class="relative rounded-3xl bg-teal-600 py-12 pl-14 pr-8 dark:bg-black"
-        >
-          <p
-            class="mt-2 text-left text-2xl text-white before:absolute before:top-0 before:left-0 before:translate-x-2 before:translate-y-2 before:transform before:font-serif before:text-9xl before:text-white before:opacity-25 before:content-['\201C'] after:absolute after:-bottom-20 after:right-0 after:-translate-x-2 after:-translate-y-2 after:transform after:font-serif after:text-9xl after:text-white after:opacity-25 after:content-['\201D'] dark:text-slate-400 sm:text-3xl"
-          >
-          uR BeAuTiFuL
-          </p>
-        </blockquote>
-        <figcaption
-          class="mt-2 text-right text-xl italic text-slate-500 dark:text-slate-400 sm:text-2xl"
-        >
-          &#8212;Emma Lee, 2023
-        </figcaption>
-      </figure>
-      <figure class="my-12">
-        <blockquote
-          class="relative rounded-3xl bg-teal-600 py-12 pl-14 pr-8 dark:bg-black"
-        >
-          <p
-            class="mt-2 text-left text-2xl text-white before:absolute before:top-0 before:left-0 before:translate-x-2 before:translate-y-2 before:transform before:font-serif before:text-9xl before:text-white before:opacity-25 before:content-['\201C'] after:absolute after:-bottom-20 after:right-0 after:-translate-x-2 after:-translate-y-2 after:transform after:font-serif after:text-9xl after:text-white after:opacity-25 after:content-['\201D'] dark:text-slate-400 sm:text-3xl"
-          >
-          this website was so fun it made me forget that i was running from the government for Tax evasion and terrorism
-          </p>
-        </blockquote>
-        <figcaption
-          class="mt-2 text-right text-xl italic text-slate-500 dark:text-slate-400 sm:text-2xl"
-        >
-          &#8212;Hongting Liu
-        </figcaption>
-      </figure>
-      <figure class="my-12">
-        <blockquote
-          class="relative rounded-3xl bg-teal-600 py-12 pl-14 pr-8 dark:bg-black"
-        >
-          <p
-            class="mt-2 text-left text-2xl text-white before:absolute before:top-0 before:left-0 before:translate-x-2 before:translate-y-2 before:transform before:font-serif before:text-9xl before:text-white before:opacity-25 before:content-['\201C'] after:absolute after:-bottom-20 after:right-0 after:-translate-x-2 after:-translate-y-2 after:transform after:font-serif after:text-9xl after:text-white after:opacity-25 after:content-['\201D'] dark:text-slate-400 sm:text-3xl"
-          >
-          Max Yang is a very talented and young violinist. He is a kind young man and has great talent.
-          </p>
-        </blockquote>
-        <figcaption
-
-        
-          class="mt-2 text-right text-xl italic text-slate-500 dark:text-slate-400 sm:text-2xl"
-        >
-          &#8212;Joey Wang
-        </figcaption>
-      </figure>
     </section>
   
 
         
-    
+      <div id="trials">Loading...</div>
+
+  <script>
+    async function loadNeurodivergentTrials() {
+      // Search terms for the query
+      const terms = [
+        "autism",
+      ];
+
+      const query = terms.map(c => `${encodeURIComponent(c)}`).join(",");
+
+      // Remove 'fields=' so we receive nested modules like statusModule with date structs
+      const url = `https://clinicaltrials.gov/api/v2/studies?query.term=${query}&pageSize=100&format=json&sort=LastUpdatePostDate:desc`;
+      try {
+        const res = await fetch(url);
+        if (!res.ok) throw new Error(`API error: ${res.status}`);
+        const data = await res.json();
+
+        const container = document.getElementById("trials");
+        container.innerHTML = "";
+
+        if (!data?.studies || data.studies.length === 0) {
+          container.innerHTML = "No current neurodivergent-related trials found.";
+          return;
+        }
+
+        // Date formatting helper (handles undefined safely)
+        const fmt = (iso) => {
+          if (!iso) return "N/A";
+          try {
+            return new Date(iso).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
+          } catch {
+            return iso;
+          }
+        };
+
+        data.studies.forEach(study => {
+          const div = document.createElement("div");
+          div.className = "trial";
+          
+          // Extract data from the correct nested structure
+          const protocolSection = study.protocolSection || {};
+          const identificationModule = protocolSection.identificationModule || {};
+          const statusModule = protocolSection.statusModule || {};
+          const conditionsModule = protocolSection.conditionsModule || {};
+          
+          const nctId = identificationModule.nctId || "N/A";
+          const briefTitle = identificationModule.briefTitle || "No title available";
+          const trialConditions = conditionsModule.conditions || [];
+          const overallStatus = statusModule.overallStatus || "Unknown";
+          const studyFirstPostDate = statusModule.studyFirstPostDateStruct?.date || "";
+          const lastUpdatePostDate = statusModule.lastUpdatePostDateStruct?.date || "";
+          const startDate = statusModule.startDateStruct?.date || "";
+          
+          div.innerHTML = `
+            <div class="title">
+              <a href="https://clinicaltrials.gov/study/${nctId}" target="_blank">
+                ${briefTitle}
+              </a>
+            </div>
+            <div class="info">
+              <strong>Conditions:</strong> ${trialConditions.join(", ") || "N/A"}<br>
+              <strong>Status:</strong> ${overallStatus}<br>
+              <strong>Start:</strong> ${fmt(startDate)} · <strong>Posted:</strong> ${fmt(studyFirstPostDate)} · <strong>Updated:</strong> ${fmt(lastUpdatePostDate)}
+            </div>
+          `;
+          container.appendChild(div);
+        });
+      } catch (err) {
+        console.error('Detailed error:', err);
+        document.getElementById("trials").innerHTML = `
+          <div style="color: red; padding: 1rem; border: 1px solid #ccc; border-radius: 4px;">
+            <strong>Error loading trials:</strong> ${err.message}<br>
+            <small>Please check the browser console for more details.</small>
+          </div>
+        `;
+      }
+    }
+
+    loadNeurodivergentTrials();
+  </script>
 </div>
 
 </main>
@@ -261,4 +364,5 @@
   
     
 </body>
+
 </html>

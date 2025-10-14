@@ -777,6 +777,10 @@ video {
   padding-top: 3rem;
   padding-bottom: 3rem;
 }
+.py-8 {
+  padding-top: 2.2rem;
+  padding-bottom: 2.2rem;
+}
 
 .pl-14 {
   padding-left: 3.5rem;

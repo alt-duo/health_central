@@ -1,0 +1,41 @@
+<svg
+  width="820"
+  height="180"
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 820 180"
+  style="background: #736b60;"
+  preserveAspectRatio="xMidYMid"
+>
+  <defs>
+    <filter id="editing-hover" x="-100%" y="-100%" width="300%" height="300%">
+      <feFlood flood-color="#c7bebd" result="flood"/>
+      <feComposite operator="in" in2="SourceAlpha" in="flood" result="shadow"/>
+      <feOffset dx="-4" dy="-4" in="SourceGraphic" result="offset-1"/>
+      <feOffset dx="4" dy="4" in="shadow" result="offset-2"/>
+      <feMerge>
+        <feMergeNode in="offset-2"/>
+        <feMergeNode in="offset-1"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <g filter="url(#editing-hover)">
+    <g transform="translate(410, 96)">
+      <text
+        x="0"
+        y="0"
+        fill="#ede7d9"
+        font-size="102"
+        font-weight="900"
+        font-style="italic"
+        text-anchor="middle"
+        dominant-baseline="middle"
+        style="letter-spacing:-1.2px; font-family: 'Cooper Black', 'CooperBlackStd', 'Cooper Std Black', 'Cooper Black Italic', Georgia, serif;"
+      >health central</text>
+    </g>
+  </g>
+
+  <style>
+    /* Uses system Cooper Black (macOS/iOS) with italic; colors and filter match max.svg */
+  </style>
+</svg>

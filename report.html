@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Neurodivergent Progress Report</title>
+  <meta name="description" content="Progress report with charts on neurodivergent conditions using reputable sources (CDC, NIH)." />
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+  <style>
+    :root {
+      --bg: #f5f9ff;
+      --card: #ffffff;
+      --ink: #0f172a;
+      --muted: #334155;
+      --primary: #2a4d8f;
+    }
+    html, body { margin: 0; padding: 0; background: var(--bg); color: var(--ink); font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; }
+    .wrap { max-width: 1100px; margin: 24px auto; padding: 0 16px; }
+    h1 { font-size: clamp(1.6rem, 2.8vw, 2.2rem); margin: 0 0 12px; }
+    p.lead { color: var(--muted); margin: 0 0 20px; }
+    .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
+    .card { grid-column: span 12; background: var(--card); border-radius: 16px; padding: 16px; box-shadow: 0 6px 22px rgba(0,0,0,.08); }
+    @media (min-width: 900px) {
+      .card.half { grid-column: span 6; }
+    }
+    .card h2 { margin: 0 0 8px; font-size: clamp(1.2rem, 2vw, 1.5rem); color: var(--primary); }
+    .sub { color: var(--muted); font-size: 0.95rem; margin-bottom: 8px; }
+    .canvas-wrap { position: relative; width: 100%; height: clamp(260px, 42vw, 420px); }
+    .muted { color: var(--muted); }
+    .small { font-size: 0.9rem; }
+    .table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+    .table th, .table td { text-align: left; padding: 8px; border-bottom: 1px solid #e5e7eb; }
+    .table th { background: #f8fafc; }
+    .row { display: flex; gap: 8px; align-items: center; }
+    .btn { display: inline-block; padding: 8px 12px; background: #e0e7ff; color: #1e293b; border-radius: 8px; text-decoration: none; font-weight: 600; }
+    .cite { font-size: 0.9rem; line-height: 1.4; }
+    .cite a { color: var(--primary); }
+    .kicker { display:inline-flex; align-items:center; gap:8px; padding:6px 10px; background:#e0e7ff; color:#1e293b; border-radius:999px; font-weight:600; margin-bottom:10px; }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <div class="wrap">
+    <div class="kicker">Neurodivergent progress report</div>
+    <h1>Key prevalence and trends (with reputable sources)</h1>
+    <p class="lead">This page summarizes recent statistics on common neurodivergent conditions and shows long-term trends for Autism Spectrum Disorder (ASD). All figures include citations and are exportable as CSV for reuse. <span id="updated" class="muted small" aria-live="polite"></span></p>
+
+    <div class="grid" role="region" aria-label="Charts and data">
+      <section class="card half" aria-labelledby="h2-prevalence">
+        <h2 id="h2-prevalence">Current estimated prevalence in U.S. children</h2>
+        <div class="sub">Bars show point estimates. Dyslexia varies across studies; we show a midpoint with a noted range.</div>
+        <div class="canvas-wrap" role="img" aria-label="Bar chart comparing prevalence: ASD 2.8%, ADHD 9.8%, Dyslexia 7.5% midpoint with a 5–10% range.">
+          <canvas id="barPrevalence"></canvas>
+        </div>
+        <div class="row" style="margin-top:10px;">
+          <a id="csv-prevalence" class="btn" download="prevalence.csv" href="#">Download CSV</a>
+          <span class="muted small">CSV includes condition, point estimate (%), and notes.</span>
+        </div>
+      </section>
+
+      <section class="card half" aria-labelledby="h2-trend">
+        <h2 id="h2-trend">ASD trend in CDC ADDM estimates</h2>
+        <div class="sub">Historical estimates converted from "1 in N" to percentages. Increases reflect improved awareness, screening, and possibly true changes.</div>
+        <div class="canvas-wrap" role="img" aria-label="Line chart showing ASD prevalence rising from about 0.7% in 2000 to about 2.8% in 2020.">
+          <canvas id="lineASD"></canvas>
+        </div>
+        <div class="row" style="margin-top:10px;">
+          <a id="csv-trend" class="btn" download="asd_trend.csv" href="#">Download CSV</a>
+          <span class="muted small">CSV includes year and prevalence (%).</span>
+        </div>
+      </section>
+
+      <section class="card" aria-labelledby="h2-citations">
+        <h2 id="h2-citations">Citations</h2>
+        <ol class="cite">
+          <li>
+            Centers for Disease Control and Prevention (CDC) — Autism Data & Research (ADDM Network):
+            <a href="https://www.cdc.gov/autism/data-research/" target="_blank" rel="noopener">https://www.cdc.gov/autism/data-research/</a>
+            <br />Key figure used: ~1 in 36 (about 2.8%) for 8-year-olds (2020 surveillance cycle; published 2023).
+          </li>
+          <li>
+            CDC — Data and Statistics on ADHD:
+            <a href="https://www.cdc.gov/adhd/data/" target="_blank" rel="noopener">https://www.cdc.gov/adhd/data/</a>
+            <br />Key figure used: ~9.8% of U.S. children 3–17 years ever had an ADHD diagnosis (2022 NSCH).
+          </li>
+          <li>
+            National Institutes of Health (NIH) — National Institute of Neurological Disorders and Stroke (NINDS), Dyslexia overview:
+            <a href="https://www.ninds.nih.gov/health-information/disorders/dyslexia" target="_blank" rel="noopener">https://www.ninds.nih.gov/health-information/disorders/dyslexia</a>
+            <br />Prevalence varies across studies; many sources cite 5–10% range. This report uses a 7.5% midpoint for visualization.
+          </li>
+        </ol>
+        <p class="muted small">Note: Exact estimates depend on study methods, definitions, and populations. Refer to the linked sources for detailed methodology.</p>
+      </section>
+
+      <section class="card" aria-labelledby="h2-notes">
+        <h2 id="h2-notes">Notes and data table</h2>
+        <p class="muted small">The table below provides a screen-reader friendly equivalent for the charts above.</p>
+        <div style="overflow-x:auto;">
+          <table class="table" aria-label="Prevalence by condition">
+            <thead>
+              <tr><th>Condition</th><th>Point estimate (%)</th><th>Notes</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Autism Spectrum Disorder (ASD)</td><td>2.8</td><td>~1 in 36 (ADDM 2020; published 2023)</td></tr>
+              <tr><td>Attention-Deficit/Hyperactivity Disorder (ADHD)</td><td>9.8</td><td>Ever diagnosed (NSCH 2022)</td></tr>
+              <tr><td>Dyslexia</td><td>7.5</td><td>Midpoint of 5–10% range across studies</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+  <script>
+    if (typeof Chart === 'undefined') {
+      document.addEventListener('DOMContentLoaded', () => {
+        const wrap = document.querySelector('.wrap');
+        const warn = document.createElement('div');
+        warn.style.cssText = 'background:#fff3cd;color:#663c00;border:1px solid #ffe69c;padding:12px;border-radius:8px;margin:12px 0;';
+        warn.textContent = 'Chart library failed to load. Please check your network or try refreshing the page.';
+        wrap.prepend(warn);
+      });
+    }
+    (async function() {
+                // Defaults used if JSON fetch fails (so the page still works offline)
+                let prevalenceData = [
+                  { condition: 'ASD', value: 2.78, note: 'ADDM ~1 in 36 (2020)' },
+                  { condition: 'ADHD', value: 9.8, note: 'NSCH 2022 (ever diagnosed)' },
+                  { condition: 'Dyslexia', value: 7.5, note: 'Midpoint of 5–10% range' },
+                ];
+                let asdTrend = [
+                  { year: 2000, percent: 0.67 },
+                  { year: 2002, percent: 0.67 },
+                  { year: 2004, percent: 0.80 },
+                  { year: 2006, percent: 0.91 },
+                  { year: 2008, percent: 1.14 },
+                  { year: 2010, percent: 1.47 },
+                  { year: 2012, percent: 1.47 },
+                  { year: 2014, percent: 1.69 },
+                  { year: 2016, percent: 1.85 },
+                  { year: 2018, percent: 2.27 },
+                  { year: 2020, percent: 2.78 },
+                ];
+                let lastUpdated = '';
+
+                async function tryLoad(url) {
+                  const res = await fetch(url, { cache: 'no-store' });
+                  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                  return res.json();
+                }
+
+                try {
+                  // 1) Try local relative path (works when served over http/https)
+                  let json = await tryLoad('data/report-data.json');
+                  if (!json && location.protocol === 'file:') {
+                    throw new Error('Local fetch returned empty on file://');
+                  }
+                  // 2) If viewing via file:// or local failed, try raw GitHub URL
+                  if (!json && (location.protocol === 'file:' || location.origin === 'null')) {
+                    const cacheBust = `cb=${Date.now()}`;
+                    const rawUrl = `https://raw.githubusercontent.com/ymaxee/health_central/main/data/report-data.json?${cacheBust}`;
+                    json = await tryLoad(rawUrl);
+                  }
+                  if (json) {
+                    if (Array.isArray(json.prevalence)) {
+                      prevalenceData = json.prevalence.map(d => ({ condition: d.condition, value: Number(d.percent), note: d.note || '' }));
+                    }
+                    if (Array.isArray(json.asdTrend)) {
+                      asdTrend = json.asdTrend.map(p => ({ year: Number(p.year), percent: Number(p.percent) }));
+                    }
+                    if (json.lastUpdated) lastUpdated = json.lastUpdated;
+                  }
+                } catch (e) {
+                  // Final fallback to defaults already defined
+                  console.warn('Using default chart data. Fetch failed:', e);
+                }
+
+                // Update UI with last updated
+                const updatedEl = document.getElementById('updated');
+                if (updatedEl) {
+                  updatedEl.textContent = lastUpdated ? `Updated: ${lastUpdated}` : '';
+                }
+
+                // Create CSV links
+                function toCSV(rows) {
+                  if (!rows.length) return '';
+                  const header = Object.keys(rows[0]);
+                  const lines = [header.join(',')];
+                  for (const r of rows) {
+                    lines.push(header.map(k => String(r[k]).replaceAll('"', '""')).join(','));
+                  }
+                  return lines.join('\n');
+                }
+                const prevCSV = toCSV(prevalenceData.map(d => ({ condition: d.condition, percent: d.value, note: d.note })));
+                const prevBlob = new Blob([prevCSV], { type: 'text/csv' });
+                document.getElementById('csv-prevalence').href = URL.createObjectURL(prevBlob);
+                const trendCSV = toCSV(asdTrend);
+                const trendBlob = new Blob([trendCSV], { type: 'text/csv' });
+                document.getElementById('csv-trend').href = URL.createObjectURL(trendBlob);
+
+                // Render charts
+                if (typeof Chart !== 'undefined') {
+                  const ctxBar = document.getElementById('barPrevalence').getContext('2d');
+                  new Chart(ctxBar, {
+                    type: 'bar',
+                    data: {
+                      labels: prevalenceData.map(d => d.condition),
+                      datasets: [{
+                        label: 'Percent of children (%)',
+                        data: prevalenceData.map(d => d.value),
+                        backgroundColor: ['#60a5fa','#34d399','#fbbf24'],
+                        borderRadius: 8,
+                      }]
+                    },
+                    options: {
+                      responsive: true,
+                      maintainAspectRatio: false,
+                      scales: { y: { beginAtZero: true, title: { display: true, text: 'Percent (%)' } } },
+                      plugins: {
+                        tooltip: { callbacks: { label: (ctx) => `${ctx.parsed.y}% — ${prevalenceData[ctx.dataIndex].note || ''}` } },
+                        legend: { display: false },
+                      }
+                    }
+                  });
+
+                  const ctxLine = document.getElementById('lineASD').getContext('2d');
+                  new Chart(ctxLine, {
+                    type: 'line',
+                    data: {
+                      labels: asdTrend.map(p => p.year),
+                      datasets: [{
+                        label: 'ASD prevalence (%)',
+                        data: asdTrend.map(p => p.percent),
+                        borderColor: '#2a4d8f',
+                        backgroundColor: 'rgba(42,77,143,0.12)',
+                        tension: 0.25,
+                        fill: true,
+                        pointRadius: 3,
+                      }]
+                    },
+                    options: {
+                      responsive: true,
+                      maintainAspectRatio: false,
+                      scales: {
+                        y: { beginAtZero: true, title: { display: true, text: 'Percent (%)' } },
+                        x: { title: { display: true, text: 'Year (ADDM surveillance)' } }
+                      },
+                      plugins: { legend: { display: false } }
+                    }
+                  });
+                }
+              })();
+  </script>
+</body>
+</html>

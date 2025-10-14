@@ -1,0 +1,21 @@
+{
+  "lastUpdated": "2025-01-15",
+  "prevalence": [
+    { "condition": "ASD", "percent": 2.78, "note": "ADDM ~1 in 36 (2020)" },
+    { "condition": "ADHD", "percent": 9.8, "note": "NSCH 2022 (ever diagnosed)" },
+    { "condition": "Dyslexia", "percent": 7.5, "note": "Midpoint of 5–10% range" }
+  ],
+  "asdTrend": [
+    { "year": 2000, "percent": 0.67 },
+    { "year": 2002, "percent": 0.67 },
+    { "year": 2004, "percent": 0.80 },
+    { "year": 2006, "percent": 0.91 },
+    { "year": 2008, "percent": 1.14 },
+    { "year": 2010, "percent": 1.47 },
+    { "year": 2012, "percent": 1.47 },
+    { "year": 2014, "percent": 1.69 },
+    { "year": 2016, "percent": 1.85 },
+    { "year": 2018, "percent": 2.27 },
+    { "year": 2020, "percent": 2.78 }
+  ]
+}

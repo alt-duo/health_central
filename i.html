@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Neurodivergent Clinical Trials (Newest First) - Updated</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      max-width: 700px;
+      margin: 2rem auto;
+      line-height: 1.6;
+    }
+    h1 {
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
+    }
+    .trial {
+      border-bottom: 1px solid #ccc;
+      padding: 0.8rem 0;
+    }
+    .trial:last-child {
+      border: none;
+    }
+    .title {
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: #2a4d8f;
+    }
+    .info {
+      color: #444;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>Neurodivergent Clinical Trials (Newest First) - Fixed Version</h1>
+  <div id="trials">Loading...</div>
+
+  <script>
+    async function loadNeurodivergentTrials() {
+      // Search terms for the query
+      const terms = [
+        "autism",
+      ];
+
+      const query = terms.map(c => `${encodeURIComponent(c)}`).join(",");
+
+      // Remove 'fields=' so we receive nested modules like statusModule with date structs
+      const url = `https://clinicaltrials.gov/api/v2/studies?query.term=${query}&pageSize=100&format=json&sort=LastUpdatePostDate:desc`;
+      try {
+        const res = await fetch(url);
+        if (!res.ok) throw new Error(`API error: ${res.status}`);
+        const data = await res.json();
+
+        const container = document.getElementById("trials");
+        container.innerHTML = "";
+
+        if (!data?.studies || data.studies.length === 0) {
+          container.innerHTML = "No current neurodivergent-related trials found.";
+          return;
+        }
+
+        // Date formatting helper (handles undefined safely)
+        const fmt = (iso) => {
+          if (!iso) return "N/A";
+          try {
+            return new Date(iso).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
+          } catch {
+            return iso;
+          }
+        };
+
+        data.studies.forEach(study => {
+          const div = document.createElement("div");
+          div.className = "trial";
+          
+          // Extract data from the correct nested structure
+          const protocolSection = study.protocolSection || {};
+          const identificationModule = protocolSection.identificationModule || {};
+          const statusModule = protocolSection.statusModule || {};
+          const conditionsModule = protocolSection.conditionsModule || {};
+          
+          const nctId = identificationModule.nctId || "N/A";
+          const briefTitle = identificationModule.briefTitle || "No title available";
+          const trialConditions = conditionsModule.conditions || [];
+          const overallStatus = statusModule.overallStatus || "Unknown";
+          const studyFirstPostDate = statusModule.studyFirstPostDateStruct?.date || "";
+          const lastUpdatePostDate = statusModule.lastUpdatePostDateStruct?.date || "";
+          const startDate = statusModule.startDateStruct?.date || "";
+          
+          div.innerHTML = `
+            <div class="title">
+              <a href="https://clinicaltrials.gov/study/${nctId}" target="_blank">
+                ${briefTitle}
+              </a>
+            </div>
+            <div class="info">
+              <strong>Conditions:</strong> ${trialConditions.join(", ") || "N/A"}<br>
+              <strong>Status:</strong> ${overallStatus}<br>
+              <strong>Start:</strong> ${fmt(startDate)} · <strong>Posted:</strong> ${fmt(studyFirstPostDate)} · <strong>Updated:</strong> ${fmt(lastUpdatePostDate)}
+            </div>
+          `;
+          container.appendChild(div);
+        });
+      } catch (err) {
+        console.error('Detailed error:', err);
+        document.getElementById("trials").innerHTML = `
+          <div style="color: red; padding: 1rem; border: 1px solid #ccc; border-radius: 4px;">
+            <strong>Error loading trials:</strong> ${err.message}<br>
+            <small>Please check the browser console for more details.</small>
+          </div>
+        `;
+      }
+    }
+
+    loadNeurodivergentTrials();
+  </script>
+</body>
+</html>
